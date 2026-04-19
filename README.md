@@ -13,7 +13,8 @@ monorepo/
 │   ├── apis/          # Backend (Express + TypeScript)
 │   └── client/        # Frontend (React + Vite + TypeScript)
 ├── tsconfig.json      # Configuración TypeScript base
-├── package.json       # Configuración de espacios de trabajo (Workspaces)
+├── package.json       # Configuración de espacios de trabajo (pnpm workspaces)
+├── pnpm-lock.yaml     # Lock file de pnpm
 ├── turbo.json         # Configuración de Turborepo
 └── ...
 ```
@@ -23,18 +24,18 @@ monorepo/
 ## 🚀 Pasos de Creación
 
 ### 1. Inicialización del Root
-Primero, creamos la carpeta raíz e inicializamos el proyecto de Node.js.
+Primero, creamos la carpeta raíz e inicializamos el proyecto con pnpm.
 
 ```bash
 mkdir monorepo && cd monorepo
-npm init -y
+pnpm init
 ```
 
 ### 2. Instalación de Turborepo
 Instalamos Turbo como dependencia de desarrollo en la raíz.
 
 ```bash
-npm install turbo --save-dev
+pnpm add -D turbo
 ```
 
 ### 3. Configuración de Workspaces
@@ -60,18 +61,18 @@ Creamos la carpeta `Apps` y dentro generamos nuestros proyectos:
 #### Frontend (Client)
 Dentro de `Apps/`, ejecutamos:
 ```bash
-npm create vite@latest client -- --template react-swc
+pnpm create vite client -- --template react-swc
 cd client
-npm install -D typescript @types/react @types/react-dom
+pnpm add -D typescript @types/react @types/react-dom
 ```
 
 #### Backend (Apis)
 Creamos la carpeta `Apps/apis` e inicializamos un proyecto con TypeScript:
 ```bash
 mkdir apis && cd apis
-npm init -y
-npm install express
-npm install -D typescript @types/express @types/node tsx nodemon
+pnpm init
+pnpm add express
+pnpm add -D typescript @types/express @types/node tsx nodemon
 ```
 
 ### 5. Configuración de Turborepo (`turbo.json`)
@@ -239,5 +240,6 @@ pnpm run build
 ## 🎯 Tecnologías Utilizadas
 - **Frontend**: React 18, Vite, TypeScript 5
 - **Backend**: Express, TypeScript 5, tsx
-- **Monorepo**: Turborepo, pnpm workspaces
+- **Monorepo**: Turborepo, **pnpm** workspaces
 - **Calidad**: ESLint con TypeScript, strict mode habilitado
+- **Package Manager**: **pnpm** (más rápido y eficiente que npm/yarn)
