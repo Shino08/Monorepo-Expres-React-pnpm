@@ -1,16 +1,7 @@
-interface AppProps {
-  title?: string;
-}
+import { ReporteCostos } from "./pages/ComponentsPage";
 
-export default function App({ title = 'Click' }: AppProps) {
+export default function App() {
   return (
-    <button
-    onClick={async () => {
-      const res = await fetch('/api');
-      const data = await res.text();
-      console.log(data);
-    }}>
-      {title}
-    </button>
+    <ReporteCostos />
   );
 }
