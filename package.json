@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "turbo dev",
     "build": "turbo build",
-    "type-check": "tsc --noEmit",
+    "type-check": "pnpm --filter client type-check && pnpm --filter apis type-check",
     "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
